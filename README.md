@@ -12,8 +12,6 @@ Antes de começar, certifique-se de que você tem instalado:
 - Um editor de código como o [VSCode](https://code.visualstudio.com/)
 - Um emulador Android/iOS ou o aplicativo **Expo Go** no seu dispositivo físico
 
----
-
 ## **Configuração do Ambiente**
 1. **Clone o repositório**:
    git clone https://github.com/Elias969/mobile_aplicacao.git
