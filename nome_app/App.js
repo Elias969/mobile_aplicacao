@@ -166,27 +166,11 @@ export default function App() {
     title: 'Reclamações',
   }}
 />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
-}
-
-const styles = StyleSheet.create({
-  drawerContainer: {
-    backgroundColor: '#6200ea',
-    flex: 1,
-  },
-  header: {
-    padding: 20,
-    backgroundColor: '#6200ea',
-  },
-  menuTitle: {
-    color: '#ffffff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  drawerLabel: {
-    color: '#ffffff',
+rários',
+          }}
+        />
+>>>>>>> 7e28c1ca967bef9793cfc839f5becaf9707fc779
+lor: '#ffffff',
     fontSize: 16,
   },
   drawerStyle: {
