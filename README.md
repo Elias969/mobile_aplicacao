@@ -19,7 +19,7 @@ Antes de começar, certifique-se de que você tem instalado:
 
 cd nome_app
 
-**Instale as dependências**: Use o gerenciador de pacotes npm**:
+**Instale as dependências**: Use o gerenciador de pacotes npm:
 
 npm install
 
