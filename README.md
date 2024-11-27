@@ -25,7 +25,7 @@ npm install
 
 **Inicie o servidor de desenvolvimento do Expo**:
 
-expo start
+npx expo start
 
 **Execute o aplicativo**:
 
