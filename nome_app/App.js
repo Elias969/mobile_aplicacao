@@ -23,6 +23,22 @@ function OtherScreen() {
   );
 }
 
+function ContactsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Contatos</Text>
+    </View>
+  );
+}
+
+function ScheduleScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Quadro de Horários</Text>
+    </View>
+  );
+}
+
 // Menu personalizado
 function CustomDrawerContent(props) {
   return (
@@ -31,6 +47,12 @@ function CustomDrawerContent(props) {
         <Text style={styles.menuTitle}>Menu</Text>
       </View>
 
+      <DrawerItem
+        label="Home"
+        labelStyle={styles.drawerLabel}
+        icon={() => <MaterialIcons name="home" size={24} color="#ff4081" />}
+        onPress={() => props.navigation.navigate('Home')}
+      />
       <DrawerItem
         label="Calendário"
         labelStyle={styles.drawerLabel}
@@ -48,6 +70,18 @@ function CustomDrawerContent(props) {
         labelStyle={styles.drawerLabel}
         icon={() => <MaterialIcons name="assessment" size={24} color="#ff4081" />}
         onPress={() => {}}
+      />
+      <DrawerItem
+        label="Contatos"
+        labelStyle={styles.drawerLabel}
+        icon={() => <MaterialIcons name="contacts" size={24} color="#ff4081" />}
+        onPress={() => props.navigation.navigate('Contacts')}
+      />
+      <DrawerItem
+        label="Quadro de Horários"
+        labelStyle={styles.drawerLabel}
+        icon={() => <MaterialCommunityIcons name="table-clock" size={24} color="#ff4081" />}
+        onPress={() => props.navigation.navigate('Schedule')}
       />
       {/* Rodapé */}
       <View style={styles.footer}>
@@ -93,6 +127,22 @@ export default function App() {
           options={{
             headerShown: true,
             title: 'Outra Página',
+          }}
+        />
+        <Drawer.Screen
+          name="Contacts"
+          component={ContactsScreen}
+          options={{
+            headerShown: true,
+            title: 'Contatos',
+          }}
+        />
+        <Drawer.Screen
+          name="Schedule"
+          component={ScheduleScreen}
+          options={{
+            headerShown: true,
+            title: 'Quadro de Horários',
           }}
         />
       </Drawer.Navigator>
