@@ -4,16 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import HorarioScreen from './HorarioScreen';
+import HomeScreen from './HomeScreen';
+import ComunicadosScreen from './ComunicadosScreen';
+import ReclamacoesScreen from './ReclamacoesScreen';
 
 const Drawer = createDrawerNavigator();
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Página Inicial</Text>
-    </View>
-  );
-}
 
 function OtherScreen() {
   return (
@@ -39,7 +36,7 @@ function ScheduleScreen() {
   );
 }
 
-// Menu personalizado
+// Menu 
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props} style={styles.drawerContainer}>
@@ -63,8 +60,15 @@ function CustomDrawerContent(props) {
         label="Comunicados"
         labelStyle={styles.drawerLabel}
         icon={() => <MaterialCommunityIcons name="bell-alert" size={24} color="#ff4081" />}
-        onPress={() => props.navigation.navigate('Other')}
+        onPress={() => props.navigation.navigate('Comunicados')}
       />
+
+<DrawerItem
+  label="Reclamações"
+  labelStyle={styles.drawerLabel}
+  icon={() => <MaterialCommunityIcons name="alert" size={24} color="#ff4081" />}
+  onPress={() => props.navigation.navigate('Reclamacoes')}
+/>
       <DrawerItem
         label="Boletim"
         labelStyle={styles.drawerLabel}
@@ -78,18 +82,18 @@ function CustomDrawerContent(props) {
         onPress={() => props.navigation.navigate('Contacts')}
       />
       <DrawerItem
-        label="Quadro de Horários"
-        labelStyle={styles.drawerLabel}
-        icon={() => <MaterialCommunityIcons name="table-clock" size={24} color="#ff4081" />}
-        onPress={() => props.navigation.navigate('Schedule')}
-      />
+  label="Quadro de Horários"
+  labelStyle={styles.drawerLabel}
+  icon={() => <MaterialCommunityIcons name="table-clock" size={24} color="#ff4081" />}
+  onPress={() => props.navigation.navigate('Horario')} 
+/>
       {/* Rodapé */}
       <View style={styles.footer}>
         <TouchableOpacity style={styles.logoutButton} onPress={() => {}}>
           <Text style={styles.logoutText}>Sair da Conta</Text>
         </TouchableOpacity>
         <Image
-          source={{ uri: 'https://via.placeholder.com/150' }} // Substituir com o logo real
+          source={{ uri: 'https://via.placeholder.com/150' }} 
           style={styles.logo}
         />
       </View>
@@ -138,13 +142,30 @@ export default function App() {
           }}
         />
         <Drawer.Screen
-          name="Schedule"
-          component={ScheduleScreen}
-          options={{
-            headerShown: true,
-            title: 'Quadro de Horários',
-          }}
-        />
+  name="Horario" 
+  component={HorarioScreen}
+  options={{
+    headerShown: true,
+    title: 'Quadro de Horários',
+  }}
+/>
+
+<Drawer.Screen
+  name="Comunicados"
+  component={ComunicadosScreen}
+  options={{
+    headerShown: true,
+    title: 'Comunicados',
+  }}
+/>
+<Drawer.Screen
+  name="Reclamacoes"
+  component={ReclamacoesScreen}
+  options={{
+    headerShown: true,
+    title: 'Reclamações',
+  }}
+/>
       </Drawer.Navigator>
     </NavigationContainer>
   );
