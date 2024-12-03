@@ -11,7 +11,6 @@ import ReclamacoesScreen from './ReclamacoesScreen';
 
 const Drawer = createDrawerNavigator();
 
-
 function OtherScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -24,14 +23,6 @@ function ContactsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Contatos</Text>
-    </View>
-  );
-}
-
-function ScheduleScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Quadro de Horários</Text>
     </View>
   );
 }
@@ -62,13 +53,12 @@ function CustomDrawerContent(props) {
         icon={() => <MaterialCommunityIcons name="bell-alert" size={24} color="#ff4081" />}
         onPress={() => props.navigation.navigate('Comunicados')}
       />
-
-<DrawerItem
-  label="Reclamações"
-  labelStyle={styles.drawerLabel}
-  icon={() => <MaterialCommunityIcons name="alert" size={24} color="#ff4081" />}
-  onPress={() => props.navigation.navigate('Reclamacoes')}
-/>
+      <DrawerItem
+        label="Reclamações"
+        labelStyle={styles.drawerLabel}
+        icon={() => <MaterialCommunityIcons name="alert" size={24} color="#ff4081" />}
+        onPress={() => props.navigation.navigate('Reclamacoes')}
+      />
       <DrawerItem
         label="Boletim"
         labelStyle={styles.drawerLabel}
@@ -82,11 +72,12 @@ function CustomDrawerContent(props) {
         onPress={() => props.navigation.navigate('Contacts')}
       />
       <DrawerItem
-  label="Quadro de Horários"
-  labelStyle={styles.drawerLabel}
-  icon={() => <MaterialCommunityIcons name="table-clock" size={24} color="#ff4081" />}
-  onPress={() => props.navigation.navigate('Horario')} 
-/>
+        label="Quadro de Horários"
+        labelStyle={styles.drawerLabel}
+        icon={() => <MaterialCommunityIcons name="table-clock" size={24} color="#ff4081" />}
+        onPress={() => props.navigation.navigate('Horario')}
+      />
+      
       {/* Rodapé */}
       <View style={styles.footer}>
         <TouchableOpacity style={styles.logoutButton} onPress={() => {}}>
@@ -142,35 +133,50 @@ export default function App() {
           }}
         />
         <Drawer.Screen
-  name="Horario" 
-  component={HorarioScreen}
-  options={{
-    headerShown: true,
-    title: 'Quadro de Horários',
-  }}
-/>
-
-<Drawer.Screen
-  name="Comunicados"
-  component={ComunicadosScreen}
-  options={{
-    headerShown: true,
-    title: 'Comunicados',
-  }}
-/>
-<Drawer.Screen
-  name="Reclamacoes"
-  component={ReclamacoesScreen}
-  options={{
-    headerShown: true,
-    title: 'Reclamações',
-  }}
-/>
-rários',
+          name="Horario"
+          component={HorarioScreen}
+          options={{
+            headerShown: true,
+            title: 'Quadro de Horários',
           }}
         />
->>>>>>> 7e28c1ca967bef9793cfc839f5becaf9707fc779
-lor: '#ffffff',
+        <Drawer.Screen
+          name="Comunicados"
+          component={ComunicadosScreen}
+          options={{
+            headerShown: true,
+            title: 'Comunicados',
+          }}
+        />
+        <Drawer.Screen
+          name="Reclamacoes"
+          component={ReclamacoesScreen}
+          options={{
+            headerShown: true,
+            title: 'Reclamações',
+          }}
+        />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
+
+const styles = StyleSheet.create({
+  drawerContainer: {
+    backgroundColor: '#6200ea',
+    flex: 1,
+  },
+  header: {
+    padding: 20,
+    backgroundColor: '#6200ea',
+  },
+  menuTitle: {
+    color: '#ffffff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  drawerLabel: {
+    color: '#ffffff',
     fontSize: 16,
   },
   drawerStyle: {
