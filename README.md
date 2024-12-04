@@ -1,6 +1,6 @@
 # Mobile Mediotec
 
-O **Mobile Mediotec** é um aplicativo mobile desenvolvido para o sistema educacional Mediotec. Este aplicativo tem como objetivo fornecer funcionalidades para os alunos e coordenadores, permitindo a visualização de informações acadêmicas, como turmas, conceitos, e muito mais.
+O **Mobile Mediotec** é um aplicativo mobile desenvolvido para o sistema educacional Mediotec. Este aplicativo tem como objetivo fornecer funcionalidades para os alunos, permitindo a visualização de informações acadêmicas, como turmas, conceitos, e muito mais.
 
 ## Funcionalidades
 
@@ -25,3 +25,7 @@ Para rodar este projeto em seu ambiente local, siga os passos abaixo:
 
 ```bash
 git clone https://github.com/SEU_USUARIO/mobileMediotec2.git
+
+npm install
+
+npx expo start
