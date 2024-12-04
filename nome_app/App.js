@@ -1,46 +1,27 @@
-import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
-import HorarioScreen from './HorarioScreen';
+import LoginScreen from './LoginScreen';
 import HomeScreen from './HomeScreen';
 import ComunicadosScreen from './ComunicadosScreen';
 import ReclamacoesScreen from './ReclamacoesScreen';
+import HorarioScreen from './HorarioScreen';
+import ContactsScreen from './ContactsScreen';
+import FinancialScreen from './FinancialScreen';
+import ConceitoScreen from './ConceitoScreen';
+import AcademicScreen from './AcademicScreen';
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
-
-function OtherScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Outra Página</Text>
-    </View>
-  );
-}
-
-function ContactsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Contatos</Text>
-    </View>
-  );
-}
-
-function ScheduleScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Quadro de Horários</Text>
-    </View>
-  );
-}
-
-// Menu 
 function CustomDrawerContent(props) {
   return (
-    <DrawerContentScrollView {...props} style={styles.drawerContainer}>
-      <View style={styles.header}>
+    <DrawerContentScrollView {...props}>
+
+<View style={styles.header}>
         <Text style={styles.menuTitle}>Menu</Text>
       </View>
 
@@ -51,29 +32,22 @@ function CustomDrawerContent(props) {
         onPress={() => props.navigation.navigate('Home')}
       />
       <DrawerItem
-        label="Calendário"
-        labelStyle={styles.drawerLabel}
-        icon={() => <MaterialCommunityIcons name="calendar" size={24} color="#ff4081" />}
-        onPress={() => props.navigation.navigate('Home')}
-      />
-      <DrawerItem
         label="Comunicados"
         labelStyle={styles.drawerLabel}
         icon={() => <MaterialCommunityIcons name="bell-alert" size={24} color="#ff4081" />}
         onPress={() => props.navigation.navigate('Comunicados')}
       />
-
-<DrawerItem
-  label="Reclamações"
-  labelStyle={styles.drawerLabel}
-  icon={() => <MaterialCommunityIcons name="alert" size={24} color="#ff4081" />}
-  onPress={() => props.navigation.navigate('Reclamacoes')}
-/>
       <DrawerItem
-        label="Boletim"
+        label="Reclamações"
         labelStyle={styles.drawerLabel}
-        icon={() => <MaterialIcons name="assessment" size={24} color="#ff4081" />}
-        onPress={() => {}}
+        icon={() => <MaterialCommunityIcons name="alert" size={24} color="#ff4081" />}
+        onPress={() => props.navigation.navigate('Reclamacoes')}
+      />
+      <DrawerItem
+        label="Quadro de Horários"
+        labelStyle={styles.drawerLabel}
+        icon={() => <MaterialCommunityIcons name="table-clock" size={24} color="#ff4081" />}
+        onPress={() => props.navigation.navigate('Horario')}
       />
       <DrawerItem
         label="Contatos"
@@ -81,121 +55,92 @@ function CustomDrawerContent(props) {
         icon={() => <MaterialIcons name="contacts" size={24} color="#ff4081" />}
         onPress={() => props.navigation.navigate('Contacts')}
       />
+<DrawerItem
+        label="Financeiro"
+        labelStyle={styles.drawerLabel}
+        icon={() => <MaterialIcons name="payment" size={24} color="#ff4081" />}
+        onPress={() => props.navigation.navigate('Financial')}  // Navegar para a tela de Financeiro
+      />
+
+<DrawerItem
+        label="Conceitos"
+        labelStyle={styles.drawerLabel}
+        icon={() => <MaterialIcons name="school" size={24} color="#ff4081" />}
+        onPress={() => props.navigation.navigate('Conceito')}  // Navegar para a tela de Conceitos
+      />
       <DrawerItem
-  label="Quadro de Horários"
-  labelStyle={styles.drawerLabel}
-  icon={() => <MaterialCommunityIcons name="table-clock" size={24} color="#ff4081" />}
-  onPress={() => props.navigation.navigate('Horario')} 
-/>
-      {/* Rodapé */}
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.logoutButton} onPress={() => {}}>
-          <Text style={styles.logoutText}>Sair da Conta</Text>
-        </TouchableOpacity>
-        <Image
-          source={{ uri: 'https://via.placeholder.com/150' }} 
-          style={styles.logo}
-        />
-      </View>
+        label="Academico"
+        labelStyle={styles.drawerLabel}
+        icon={() => <MaterialIcons name="book" size={24} color="#ff4081" />}  // Ícone de livro para Acadêmico
+        onPress={() => props.navigation.navigate('Academico')}  // Navegar para a tela Acadêmica
+      />
+      {/* Botão de Sair */}
+      <TouchableOpacity
+        style={styles.logoutButton}
+        onPress={() => props.navigation.replace('Login')}
+      >
+        <Text style={styles.logoutText}>Sair da Conta</Text>
+      </TouchableOpacity>
     </DrawerContentScrollView>
+  );
+}
+
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        drawerStyle: { backgroundColor: '#6200ea', width: 240 },
+        headerStyle: { backgroundColor: '#6200ea' },
+        headerTintColor: '#ffffff',
+        headerTitleStyle: { fontWeight: 'bold' },
+      }}
+    >
+      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Comunicados" component={ComunicadosScreen} />
+      <Drawer.Screen name="Reclamacoes" component={ReclamacoesScreen} />
+      <Drawer.Screen name="Horario" component={HorarioScreen} />
+      <Drawer.Screen name="Contacts" component={ContactsScreen} />
+      <Drawer.Screen name="Financial" component={FinancialScreen} />
+      <Drawer.Screen name="Conceito" component={ConceitoScreen} />
+      <Drawer.Screen name="Academico" component={AcademicScreen} />
+      
+    </Drawer.Navigator>
   );
 }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        drawerContent={(props) => <CustomDrawerContent {...props} />}
-        screenOptions={{
-          drawerStyle: styles.drawerStyle,
-          headerStyle: {
-            backgroundColor: '#6200ea',
-          },
-          headerTintColor: '#ffffff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}
-      >
-        <Drawer.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            headerShown: true, // Mostra o cabeçalho
-            title: 'Página Inicial',
-          }}
-        />
-        <Drawer.Screen
-          name="Other"
-          component={OtherScreen}
-          options={{
-            headerShown: true,
-            title: 'Outra Página',
-          }}
-        />
-        <Drawer.Screen
-          name="Contacts"
-          component={ContactsScreen}
-          options={{
-            headerShown: true,
-            title: 'Contatos',
-          }}
-        />
-        <Drawer.Screen
-  name="Horario" 
-  component={HorarioScreen}
-  options={{
-    headerShown: true,
-    title: 'Quadro de Horários',
-  }}
-/>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Drawer" component={DrawerNavigator} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
-<Drawer.Screen
-  name="Comunicados"
-  component={ComunicadosScreen}
-  options={{
-    headerShown: true,
-    title: 'Comunicados',
-  }}
-/>
-<Drawer.Screen
-  name="Reclamacoes"
-  component={ReclamacoesScreen}
-  options={{
-    headerShown: true,
-    title: 'Reclamações',
-  }}
-/>
-rários',
-          }}
-        />
->>>>>>> 7e28c1ca967bef9793cfc839f5becaf9707fc779
-lor: '#ffffff',
+const styles = StyleSheet.create({
+  drawerLabel: {
+    color: '#ffffff',
     fontSize: 16,
   },
-  drawerStyle: {
-    width: 240,
-  },
-  footer: {
-    marginTop: 'auto',
-    padding: 20,
-    alignItems: 'center',
+  menuTitle: {
+    color: '#ffffff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   logoutButton: {
+    marginTop: 'auto',
     backgroundColor: '#ff4081',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    padding: 15,
     borderRadius: 5,
+    alignItems: 'center',
+    marginHorizontal: 10,
   },
   logoutText: {
     color: '#ffffff',
     fontSize: 16,
     fontWeight: 'bold',
-  },
-  logo: {
-    marginTop: 20,
-    width: 100,
-    height: 50,
-    resizeMode: 'contain',
   },
 });
