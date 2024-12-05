@@ -7,7 +7,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = () => {
     // Login com validação simples para teste
-    if (matricula === "teste" && senha === "123456") {
+    if (matricula === "aluno" && senha === "123456") {
       navigation.replace("Drawer"); // Vai para o DrawerNavigator
     } else {
       alert("Matrícula ou senha inválida.");
@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require("./assets/images/mediotec.png")} // Atualize o caminho da imagem
+          source={require("./assets/images/mediotec-mobile.png")} // Atualize o caminho da imagem
           style={styles.logo}
           resizeMode="contain"
         />
